@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foosball Friends - Squad Score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/burger-menu.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-greeting">
+                <span id="user-greeting-name">Ready to compete!</span>
+            </div>
+            <!-- Hamburger button -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-leaderboards.html" class="nav-link active">Leaderboards</a>
+                <a href="chat.html" class="nav-link">My Squads</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="leaderboard-main-content">
+        <div class="leaderboard-container">
+            <div class="leaderboard-admin-buttons">
+                <button class="add-to-leaderboard-button" id="add-to-leaderboard-button" style="display: none;" onclick="handleAddToLeaderboard()">
+                    <span>ADD MEMBER</span>
+                    <span>TO LEADERBOARD</span>
+                </button>
+                <button class="delete-leaderboard-button" id="delete-leaderboard-button" style="display: none;" onclick="handleDeleteLeaderboard()">
+                    <span>DELETE</span>
+                    <span>LEADERBOARD</span>
+                </button>
+            </div>
+            <div class="leaderboard-header">
+                <a href="#" class="back-link" onclick="goBackToLeaderboards()">
+                    &lt; Back to Leaderboards
+                </a>
+                <div class="leaderboard-title-section">
+                    <h1 class="leaderboard-title" id="leaderboard-title">Loading...</h1>
+                    <button class="squad-chat-button" id="squad-chat-button" style="display: none;" onclick="openSquadChat()">
+                        <span>OPEN SQUAD</span>
+                        <span>CHAT</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="leaderboard-list"></div> 
+            
+            <!-- Add Score to Leaderboard button -->
+            <div class="leaderboard-add-score">
+                <button class="leaderboard-add-score-button" type = "button" data-add-score-trigger> 
+                    Add Score to Leaderboard
+                </button>
+            </div>
+            <div class="leaderboard-add-score-panel" data-add-score-panel hidden>
+                <form class="leaderboard-add-score-form" id="leaderboard-add-score-form" novalidate>
+                    <div class="form-field">
+                        <label for="add-score-name">Player Name</label>
+                        <select id="add-score-name" name="player_name" required>
+                            <option value="">Select a player...</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="add-score-value">Score</label>
+                        <input id="add-score-value" name="score" type="number" required min="0" step="1" placeholder="Enter score">
+                    </div>
+                    <div class="form-field form-field--evidence">
+                        <div class="form-field-header">
+                            <label for="add-score-evidence">Evidence (optional)</label>
+                            <span class="form-hint">Images only, max 5MB</span>
+                        </div>
+                        <input id="add-score-evidence" name="evidence" type="file" accept="image/*" hidden>
+                        <div class="evidence-control">
+                            <button type="button" class="form-attach" data-add-score-attach>Attach Evidence</button>
+                            <span class="evidence-filename" data-add-score-filename>No file selected</span>
+                            <button type="button" class="evidence-clear" data-add-score-clear hidden>Remove</button>
+                        </div>
+                    </div>
+                    <p class="form-error" role="alert" data-add-score-error hidden></p>
+                    <div class="form-actions">
+                        <button type="button" class="form-cancel" data-add-score-cancel>Cancel</button>
+                        <button type="submit" class="form-submit">Submit Score</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Add to Leaderboard Modal -->
+            <div class="modal" id="add-to-leaderboard-modal" style="display: none;">
+                <div class="modal-content">
+                    <h2>Add Members to Leaderboard</h2>
+                    <p>Select squad members to add to this leaderboard:</p>
+                    <div id="squad-members-list" class="squad-members-list">
+                        <!-- Members will be loaded here -->
+                    </div>
+                    <div class="modal-actions">
+                        <button class="form-cancel" onclick="closeAddToLeaderboardModal()">Cancel</button>
+                        <button class="form-submit" onclick="confirmAddMembersToLeaderboard()">Add Selected</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Auth System -->
+    <script src="supabase-auth.js"></script>
+    <!-- Database Helper Functions -->
+    <script src="js/database.js"></script>
+    <!-- Site Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/burger-menu.js"></script>
+    <script src="js/leaderboards.js"></script>
+
+</body>
+</html>

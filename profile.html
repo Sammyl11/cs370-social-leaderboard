@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Squad Score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/burger-menu.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-greeting">
+                <span>Ready to compete!</span>
+            </div>
+            <!-- Hamburger button -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-leaderboards.html" class="nav-link">Leaderboards</a>
+                <a href="chat.html" class="nav-link">My Squads</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-main" id="profile-content" style="display: none;">
+        <section class="profile-container" data-animate-on-scroll>
+            <header class="profile-header">
+                <div class="profile-avatar-wrapper">
+                    <button class="profile-avatar-trigger" type="button" data-avatar-trigger aria-label="Upload profile avatar" disabled aria-disabled="true">
+                        <div class="profile-avatar" aria-live="polite" data-avatar-accent="sunset" data-avatar-state="initials" data-avatar-editable="false">
+                            <span class="profile-avatar-initials" data-profile-avatar-initials>SS</span>
+                            <img class="profile-avatar-image" data-profile-avatar-image alt="Profile avatar" hidden>
+                        </div>
+                    </button>
+                    <input class="sr-only" type="file" id="profile-avatar-input" accept="image/*" data-avatar-input>
+                </div>
+                <div class="profile-summary">
+                    <h1 class="profile-name" data-profile-field="fullName"></h1>
+                    <!-- <p class="profile-tagline" data-profile-field="tagline">Joined Since: March 2024</p> -->
+                    <button class="profile-edit-button" type="button" data-profile-action="edit">Edit Profile</button>
+                    <div class="profile-avatar-tools" data-avatar-tools hidden>
+                        <button class="avatar-upload-button" type="button" data-avatar-upload aria-disabled="true">
+                            <span class="avatar-upload-icon" aria-hidden="true">📷</span>
+                            <span>Upload photo</span>
+                        </button>
+                        <span class="avatar-tool-divider" aria-hidden="true">or</span>
+                        <div class="profile-avatar-accents" data-avatar-accent-panel hidden>
+                            <p class="avatar-accent-title">Choose an accent color</p>
+                            <div class="avatar-accent-options" role="group" aria-label="Avatar accent colors" data-avatar-accent-group>
+                                <button type="button" class="avatar-accent-chip is-selected" data-avatar-accent-option="sunset">Sunset</button>
+                                <button type="button" class="avatar-accent-chip" data-avatar-accent-option="violet">Violet</button>
+                                <button type="button" class="avatar-accent-chip" data-avatar-accent-option="ocean">Ocean</button>
+                                <button type="button" class="avatar-accent-chip" data-avatar-accent-option="forest">Forest</button>
+                            </div>
+                        </div>
+                        <button class="profile-avatar-reset" type="button" data-avatar-reset hidden>Reset to initials</button>
+                    </div>
+            </header>
+
+            <form class="profile-grid" id="profile-form" novalidate>
+                <section class="profile-card" aria-labelledby="personal-details-title">
+                    <div class="profile-card-header">
+                        <h2 class="profile-card-title" id="personal-details-title">Personal Details</h2>
+                    </div>
+                    <div class="profile-card-body">
+                        <div class="profile-field" data-profile-field-container>
+                            <label class="profile-field-label" for="profile-first-name">First Name</label>
+                            <span class="profile-field-value" data-profile-display>Georgia</span>
+                            <input class="profile-field-input" id="profile-first-name" name="firstName" value="" autocomplete="given-name" required>
+                        </div>
+                        <div class="profile-field" data-profile-field-container>
+                            <label class="profile-field-label" for="profile-last-name">Last Name</label>
+                            <span class="profile-field-value" data-profile-display>Walsh</span>
+                            <input class="profile-field-input" id="profile-last-name" name="lastName" value="" autocomplete="family-name" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="profile-card" aria-labelledby="login-details-title">
+                    <div class="profile-card-header">
+                        <h2 class="profile-card-title" id="login-details-title">Login Details</h2>
+                        <span class="profile-card-note">Only visible to you</span>
+                    </div>
+                    <div class="profile-card-body">
+                        <div class="profile-field" data-profile-field-container>
+                            <label class="profile-field-label" for="profile-username">Username</label>
+                            <span class="profile-field-value" data-profile-display>gwFirepit</span>
+                            <input class="profile-field-input" id="profile-username" name="username" autocomplete="username" required>
+                        </div>
+                        <div class="profile-field" data-profile-field-container>
+                            <label class="profile-field-label" for="profile-email">Email</label>
+                            <span class="profile-field-value" data-profile-display>georgia.walsh@example.com</span>
+                            <input class="profile-field-input" id="profile-email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="profile-field" data-profile-field-container>
+                            <label class="profile-field-label" for="profile-password">Password</label>
+                            <span class="profile-field-value" data-profile-display>12345678</span>
+                            <input class="profile-field-input" id="profile-password" name="password" type="password" placeholder="*****" autocomplete="current-password" required>
+
+                        </div>
+                    </div>
+                </section>
+            </form>
+
+            <div class="profile-actions" data-profile-actions>
+                <button class="profile-action-button profile-action-cancel" type="button" data-profile-action="cancel">Cancel</button>
+                <button class="profile-action-button profile-action-submit" type="submit" form="profile-form" data-profile-action="submit">Save Changes</button>
+            </div>
+            
+            <!-- Logout Button -->
+            <div style="margin-top: 20px; text-align: center;">
+                <button id="profile-logout-btn" class="profile-action-button" type="button" style="background-color: #EF4444; border-color: #EF4444;">
+                    Logout
+                </button>
+            </div>
+        </section>
+
+        <div class="avatar-modal" data-avatar-modal hidden aria-hidden="true">
+            <div class="avatar-modal-backdrop" data-avatar-dismiss></div>
+            <div class="avatar-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="avatar-modal-title">
+                <div class="avatar-modal-header">
+                    <h2 id="avatar-modal-title">Update Avatar</h2>
+                    <button class="avatar-modal-close" type="button" data-avatar-dismiss aria-label="Close avatar editor">&times;</button>
+                </div>
+                <div class="avatar-modal-body">
+                    <div class="avatar-cropper">
+                        <canvas id="avatar-crop-canvas" width="320" height="320" data-avatar-canvas aria-label="Avatar crop preview" role="img" hidden></canvas>
+                        <div class="avatar-cropper-placeholder" data-avatar-placeholder>
+                            <span class="avatar-cropper-placeholder-icon">📷</span>
+                            <p>Select a photo to start cropping.</p>
+                        </div>
+                        <canvas id="avatar-output-canvas" width="320" height="320" hidden></canvas>
+                        <p class="avatar-cropper-hint">Drag image to reposition. Use the slider to zoom.</p>
+                    </div>
+                    <div class="avatar-control-group">
+                        <label class="avatar-control-label" for="avatar-zoom-range">Zoom</label>
+                        <input type="range" id="avatar-zoom-range" min="1" max="3" step="0.01" value="1" data-avatar-zoom>
+                    </div>
+                    <div class="avatar-control-group avatar-control-row">
+                        <button type="button" class="avatar-modal-action ghost" data-avatar-repick>Choose different photo</button>
+                        <button type="button" class="avatar-modal-action ghost" data-avatar-reset-modal>Reset to initials</button>
+                    </div>
+                    <p class="avatar-error" data-avatar-error hidden></p>
+                </div>
+                <div class="avatar-modal-footer">
+                    <button class="avatar-modal-action secondary" type="button" data-avatar-dismiss>Cancel</button>
+                    <button class="avatar-modal-action primary" type="button" data-avatar-apply disabled>Apply Avatar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Auth System -->
+    <script src="supabase-auth.js"></script>
+    <!-- Site Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/burger-menu.js"></script>
+    <script>
+        window.addEventListener('load', async function() {
+            const greeting = document.querySelector('.nav-greeting span');
+            // Wait for auth to initialize
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Check if logged in - redirect if not
+            const user = await window.SquadScoreAuth.getUser();
+            if (!user) {
+                console.log('Not logged in, redirecting to login...');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // User is logged in - show the profile content
+            document.getElementById('profile-content').style.display = 'block';
+            console.log('Loading profile for user:', user.email);
+            
+            // Setup logout button
+            const logoutBtn = document.getElementById('profile-logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    console.log('🔴 LOGOUT BUTTON CLICKED');
+                    
+                    if (confirm('Are you sure you want to logout?')) {
+                        logoutBtn.textContent = 'Logging out...';
+                        logoutBtn.disabled = true;
+                        
+                        const { error } = await window.SquadScoreAuth.signOut();
+                        
+                        if (error) {
+                            alert('Logout error: ' + error.message);
+                            logoutBtn.disabled = false;
+                            logoutBtn.textContent = 'Logout';
+                        } else {
+                            console.log('✅ LOGOUT SUCCESSFUL - Redirecting...');
+                            window.location.href = 'index.html';
+                        }
+                    }
+                });
+            }
+            
+            // Load user profile from database
+            const client = window.SquadScoreAuth.getClient();
+            if (client) {
+                console.log('Fetching profile for user ID:', user.id);
+                
+                const { data: profile, error } = await client
+                    .from('user')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
+                
+                console.log('Profile query result:', { profile, error });
+                
+                function updateProfileDisplays(profileData) {
+                    if (!profileData) return;
+                    
+                    // Update ALL display spans directly
+                    const allDisplays = document.querySelectorAll('[data-profile-display]');
+                    
+                    allDisplays.forEach((display) => {
+                        const fieldContainer = display.closest('[data-profile-field-container]');
+                        if (!fieldContainer) return;
+                        
+                        const label = fieldContainer.querySelector('.profile-field-label');
+                        const labelText = label ? label.textContent.trim() : '';
+                        
+                        if (labelText === 'First Name') {
+                            display.textContent = profileData.first_name || '--';
+                        } else if (labelText === 'Last Name') {
+                            display.textContent = profileData.last_name || '--';
+                        } else if (labelText === 'Username') {
+                            display.textContent = profileData.username || '--';
+                        } else if (labelText === 'Email') {
+                            display.textContent = profileData.email || '--';
+                        } else if (labelText === 'Password') {
+                            display.textContent = '••••••••';
+                        }
+                    });
+                    
+                    // Update input fields
+                    const firstNameInput = document.getElementById('profile-first-name');
+                    const lastNameInput = document.getElementById('profile-last-name');
+                    const usernameInput = document.getElementById('profile-username');
+                    const emailInput = document.getElementById('profile-email');
+                    
+                    if (firstNameInput) firstNameInput.value = profileData.first_name || '';
+                    if (lastNameInput) lastNameInput.value = profileData.last_name || '';
+                    if (usernameInput) usernameInput.value = profileData.username || '';
+                    if (emailInput) emailInput.value = profileData.email || '';
+                    
+                    // Update header name and avatar
+                    const fullName = `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim();
+                    const displayName = fullName ||
+                                        user.user_metadata?.first_name ||
+                                        profileData.username ||
+                                        user.user_metadata?.username ||
+                                        user.email.split('@')[0] ||
+                                        user.email;
+                    const nameElement = document.querySelector('[data-profile-field="fullName"]');
+                    if (nameElement) nameElement.textContent = displayName;
+                    
+                    const avatarElement = document.querySelector('[data-profile-avatar-initials]');
+                    if (avatarElement) {
+                        const usernameText = profileData.username || user.email;
+                        const initials = usernameText.substring(0, 2).toUpperCase();
+                        avatarElement.textContent = initials;
+                    }
+                }
+                
+                if (!error && profile) {
+                    console.log('✅ Profile loaded from database:', profile);
+                    updateProfileDisplays(profile);
+                } else {
+                    console.warn('⚠️ Profile not in database, using auth data only');
+                    
+                    // Use auth user data as fallback
+                    const fallbackFirstName = (user.user_metadata?.first_name || '').trim();
+                    const fallbackUsername = user.user_metadata?.username || user.email.split('@')[0];
+                    
+                    // Update what we can from auth
+                    const usernameInput = document.getElementById('profile-username');
+                    const emailInput = document.getElementById('profile-email');
+                    if (usernameInput) usernameInput.value = fallbackUsername;
+                    if (emailInput) emailInput.value = user.email;
+                    
+                    // Update displays
+                    const fallbackDisplays = document.querySelectorAll('[data-profile-display]');
+                    fallbackDisplays.forEach((display) => {
+                        const fieldContainer = display.closest('[data-profile-field-container]');
+                        if (!fieldContainer) return;
+                        
+                        const label = fieldContainer.querySelector('.profile-field-label');
+                        const labelText = label ? label.textContent.trim() : '';
+                        
+                        if (labelText === 'First Name') {
+                            display.textContent = fallbackFirstName || '--';
+                        } else if (labelText === 'Last Name') {
+                            display.textContent = '--';
+                        } else if (labelText === 'Username') {
+                            display.textContent = fallbackUsername;
+                        } else if (labelText === 'Email') {
+                            display.textContent = user.email;
+                        } else if (labelText === 'Password') {
+                            display.textContent = '••••••••';
+                        }
+                    });
+                    
+                    // Update header
+                    const nameElement = document.querySelector('[data-profile-field="fullName"]');
+                    if (nameElement) nameElement.textContent = fallbackFirstName || fallbackUsername;
+                    
+                    const avatarElement = document.querySelector('[data-profile-avatar-initials]');
+                    if (avatarElement) {
+                        const initialsSource = (fallbackFirstName || fallbackUsername || 'SS').toUpperCase();
+                        const initials = initialsSource.substring(0, 2);
+                        avatarElement.textContent = initials;
+                    }
+
+                    if (greeting) {
+                        const preferredGreeting = fallbackFirstName || fallbackUsername || 'Player';
+                        greeting.textContent = `Ready to compete, ${preferredGreeting}!`;
+                    }
+                }
+                
+                // Handle profile form submission to update first/last name
+                const profileForm = document.getElementById('profile-form');
+                if (profileForm) {
+                    profileForm.addEventListener('submit', async (event) => {
+                        event.preventDefault();
+                        
+                        const firstNameInput = document.getElementById('profile-first-name');
+                        const lastNameInput = document.getElementById('profile-last-name');
+                        
+                        const updates = {
+                            first_name: firstNameInput ? firstNameInput.value.trim() || null : null,
+                            last_name: lastNameInput ? lastNameInput.value.trim() || null : null,
+                            updated_at: new Date().toISOString()
+                        };
+                        
+                        console.log('🔄 Updating profile names with:', updates);
+                        
+                        const { error: updateError } = await client
+                            .from('user')
+                            .update(updates)
+                            .eq('id', user.id);
+                        
+                        if (updateError) {
+                            console.error('❌ Failed to update profile names:', updateError);
+                            alert('Unable to update your profile right now. Please try again.');
+                            return;
+                        }
+                        
+                        console.log('✅ Profile names updated. Refreshing view...');
+                        
+                        const { data: refreshedProfile, error: refreshError } = await client
+                            .from('user')
+                            .select('*')
+                            .eq('id', user.id)
+                            .single();
+                        
+                        if (!refreshError && refreshedProfile) {
+                            updateProfileDisplays(refreshedProfile);
+                            
+                            if (window.SquadScoreAuth && window.SquadScoreAuth.invalidateProfileCache) {
+                                window.SquadScoreAuth.invalidateProfileCache();
+                                if (window.SquadScoreAuth.getCachedProfile) {
+                                    window.SquadScoreAuth.getCachedProfile();
+                                }
+                            }
+                            
+                            const greetingName = refreshedProfile.first_name ||
+                                                 user.user_metadata?.first_name ||
+                                                 user.user_metadata?.username ||
+                                                 refreshedProfile.username ||
+                                                 user.email.split('@')[0] ||
+                                                 'Player';
+                            if (greeting) {
+                                greeting.textContent = `Ready to compete, ${greetingName}!`;
+                            }
+                            
+                            alert('Profile updated successfully.');
+                        } else {
+                            console.warn('⚠️ Updated names saved but could not refresh profile view:', refreshError);
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

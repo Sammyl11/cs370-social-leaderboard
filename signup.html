@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Squad Score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-greeting">
+                <span>Welcome to Squad Score!</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-leaderboards.html" class="nav-link">Leaderboards</a>
+                <a href="all-squads.html" class="nav-link">My Squads</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="login-main-content">
+        <div class="login-container">
+            <h1 class="login-title">Sign Up</h1>
+            
+            <div class="login-form-container">
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="username" class="form-label">User Name:</label>
+                        <input type="text" id="username" name="username" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailAddress" class="form-label">Email Address:</label>
+                        <input type="email" id="emailAddress" name="emailAddress" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" id="password" name="password" class="form-input" required minlength="6">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                    </div>
+                    
+                    <div id="error-message" style="color: #ff4444; margin-top: 10px; display: none;"></div>
+                    <div id="success-message" style="color: #68D391; margin-top: 10px; display: none;"></div>
+                    
+                    <button type="submit" class="signup-button">
+                        Register Now >
+                    </button>
+                    
+                    <div class="or-separator">OR</div>
+                    
+                    <button type="button" class="login-button" onclick="window.location.href='login.html'">
+                        Back to Sign In >
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Auth System -->
+    <script src="supabase-auth.js"></script>
+    <!-- Site Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        window.addEventListener('load', async function() {
+            // Wait for auth to initialize
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Check if already logged in
+            const user = await window.SquadScoreAuth.getUser();
+            if (user) {
+                console.log('Already logged in, redirecting...');
+                window.location.href = 'all-leaderboards.html';
+                return;
+            }
+            
+            // Handle signup form
+            const signupForm = document.querySelector('.login-form');
+            const signupButton = document.querySelector('.signup-button');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            
+            signupForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('emailAddress').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+                
+                // Validate passwords match
+                if (password !== confirmPassword) {
+                    errorMessage.textContent = 'Passwords do not match';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                
+                console.log('Attempting signup...');
+                signupButton.disabled = true;
+                signupButton.textContent = 'Creating Account...';
+                
+                const { data, error } = await window.SquadScoreAuth.signUp(email, password, username);
+                
+                if (error) {
+                    console.error('Signup failed:', error.message);
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                    signupButton.disabled = false;
+                    signupButton.textContent = 'Register Now >';
+                } else {
+                    console.log('Signup successful!');
+                    successMessage.textContent = 'Account created! Redirecting to login...';
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

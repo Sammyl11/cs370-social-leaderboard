@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Squad Score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-greeting">
+                <span>Welcome to Squad Score!</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-leaderboards.html" class="nav-link">Leaderboards</a>
+                <a href="all-squads.html" class="nav-link">My Squads</a>
+                <a href="profile.html" class="nav-link active">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="login-main-content">
+        <div class="login-container">
+            <h1 class="login-title">Sign In</h1>
+            
+            <div class="login-form-container">
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" id="password" name="password" class="form-input" required>
+                    </div>
+                    
+                    <div id="error-message" style="color: #ff4444; margin-top: 10px; display: none;"></div>
+                    
+                    <button type="submit" class="login-button">Login ></button>
+                    
+                    <div class="or-separator">OR</div>
+                    
+                    <button type="button" class="signup-button" onclick="window.location.href='signup.html'"> 
+                        Sign Up Now > 
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Auth System -->
+    <script src="supabase-auth.js"></script>
+    <!-- Site Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        window.addEventListener('load', async function() {
+            // Wait a moment for auth to initialize
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            // Handle login form
+            const loginForm = document.querySelector('.login-form');
+            const loginButton = document.querySelector('.login-button');
+            const errorMessage = document.getElementById('error-message');
+
+            if (!loginForm) return;
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                console.log('Attempting login...');
+                
+                errorMessage.style.display = 'none';
+                loginButton.disabled = true;
+                loginButton.textContent = 'Logging in...';
+                
+                const { data, error } = await window.SquadScoreAuth.signIn(email, password);
+                
+                if (error) {
+                    console.error('Login failed:', error.message);
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                    loginButton.disabled = false;
+                    loginButton.textContent = 'Login >';
+                } else {
+                    console.log('Login successful! Redirecting...');
+                    loginButton.textContent = 'Success!';
+                    setTimeout(() => {
+                        window.location.href = 'all-leaderboards.html';
+                    }, 500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

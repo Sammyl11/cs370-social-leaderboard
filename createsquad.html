@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Squad - Squad Score</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/burger-menu.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/createsquad.css">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-greeting">
+                <span id="user-greeting-name">Ready to compete!</span>
+            </div>
+
+            <!-- Hamburger button -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="all-leaderboards.html" class="nav-link">Leaderboards</a>
+                <a href="chat.html" class="nav-link">My Squads</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="squadlist-content">
+        <section class="squad-header">
+            <div>
+                <h1 class="squad-title">Create Squad</h1>
+            </div>
+            <button class="create-squad-toggle" type="button" data-action="toggle-form">
+                + Create Squad
+            </button>
+        </section>
+
+        <section class="create-squad-panel" data-panel hidden>
+            <form id="create-squad-form" novalidate>
+                <div class="form-field">
+                    <label for="squad-name">Squad Name<span aria-hidden="true">*</span></label>
+                    <input id="squad-name" name="squad_name" required maxlength="40" autocomplete="off" placeholder="e.g., Valorant Eagles">
+                </div>
+                <div class="form-field">
+                    <label for="game-title">Game Title<span aria-hidden="true">*</span></label>
+                    <input id="game-title" name="game_title" required maxlength="40" autocomplete="off" placeholder="e.g., Valorant">
+                </div>
+                <div class="form-field">
+                    <label for="skill-tier">Skill Tier</label>
+                    <input id="skill-tier" name="skill_tier" maxlength="30" autocomplete="off" placeholder="e.g., Diamond">
+                </div>
+                <div class="form-field">
+                    <label for="visibility">Visibility</label>
+                    <select id="visibility" name="visibility">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="squad-description">Description</label>
+                    <textarea id="squad-description" name="description" maxlength="200" placeholder="Share your squad's focus or goals"></textarea>
+                </div>
+                <p class="form-error" role="alert" data-error hidden></p>
+                <div class="form-actions">
+                    <button type="button" class="form-cancel" data-action="cancel">Reset</button>
+                    <button type="submit" class="form-submit">Create Squad</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="invite-code-banner" data-invite-banner hidden aria-live="polite">
+            <div class="invite-code-banner__content">
+                <div class="invite-code-banner__text">
+                    <p class="invite-code-label">Squad created!</p>
+                    <h2 class="invite-code-value" data-invite-code>XXXX-XXXX</h2>
+                    <p class="invite-code-help">Share this code with teammates so they can join from the Join Squad page.</p>
+                </div>
+                <div class="invite-code-actions">
+                    <button type="button" class="copy-invite-btn" data-copy-invite>Copy Code</button>
+                    <button type="button" class="dismiss-invite-btn" data-dismiss-invite>Done</button>
+                </div>
+            </div>
+            <p class="invite-code-feedback" data-copy-feedback hidden>Copied to clipboard</p>
+        </section>
+
+        <section class="squad-list" data-squad-list>
+            <p class="empty-state" data-empty-state>
+                No squads yet. Use the form above to create one.
+            </p>
+        </section>
+    </main>
+    
+    <!-- Supabase Auth + Database -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-auth.js"></script>
+    <script src="js/database.js"></script>
+
+    <!-- Upstream site scripts -->
+    <script src="js/script.js"></script>
+    <script type="module" src="js/squads.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/burger-menu.js"></script>
+
+</body>
+</html>
