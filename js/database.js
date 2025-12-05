@@ -952,6 +952,9 @@ async function createSquad(squadData) {
         return { data: null, error: membershipError };
     }
     
+    // Note: Chat room is created on-demand when first accessed via getOrCreateSquadChatRoom()
+    // This avoids RLS timing issues during squad creation
+    
     return { data: { ...squad, membershipRole: 'owner' }, error: null };
 }
 
