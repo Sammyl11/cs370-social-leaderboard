@@ -8,8 +8,11 @@
     "start": "npx serve .",
     "dev": "npx live-server --port=3000 --open=/index.html",
     "server": "node js/server.js",
-    "build": "echo 'Static site - no build process needed'",
+    "build": "node build.js",
     "preview": "npx serve . --listen 3000"
+  },
+  "vercel": {
+    "outputDirectory": "public"
   },
   "keywords": [
     "leaderboard",
