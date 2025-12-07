@@ -1,5 +1,8 @@
-# Squad Score - Leaderboard Website
-A modern, responsive leaderboard website with a gaming aesthetic and dark theme.
+# Squad Score: The Social Leaderboard App
+A modern, responsive leaderboard web app with a gaming-inspired UI, designed for social competition and collaboration.
+
+## About This Project
+
 
 ## Features
 
