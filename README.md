@@ -6,35 +6,41 @@ Our app is designed to bring structure and excitement to casual competition amon
 
 ## Features
 
-- **Modern Design**: Dark theme with gaming-inspired colors and typography
-- **Responsive Layout**: Works perfectly on desktop, tablet, and mobile devices
-- **Interactive Navigation**: Smooth transitions and hover effects
-- **Accessibility**: Keyboard navigation support and semantic HTML
+- Dark-theme, gaming-inspired UI with light-theme option for accessibility
+- User authentication (via Supabase) for login/signup  
+- Squad creation and management (create squads, join existing squads, manage squad membership)
+- Optional “evidence” submission and validation when adding scores to leaderboard
+- Chatroom support for squads
+- Responsive Layout: works on desktop, tablet, and mobile devices
 
-Our app is now live! Try the deployed version here: [https://cs370-social-leaderboard.vercel.app/]()
+Squad Score is now live! Try the [deployed version](https://cs370-social-leaderboard.vercel.app/) here.
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
+- Modern web browser (e.g. Chrome, Firefox, Safari)
+- (If using backend) PostgreSQL or Supabase account to host the database using provided SQL schema  
+- (Optional) Node.js — for running development server or any build scripts  
 
-- Node.js (optional, for development server)
-- Modern web browser
-
-### Installation & Setup
+## Installation & Setup
 
 1. Clone or download the project files
+   ```bash
+   git clone https://github.com/sammyl11/cs370-social-leaderboard.git
+   cd cs370-social-leaderboard
+   ```
+
 2. Navigate to the project directory
 3. (Optional) Install dependencies:
    ```bash
    npm install
    ```
 
-### Running the Project
+## Running the Project
 
-#### Option 1: Direct File Opening
+### Option 1: Direct File Opening
 Simply open `index.html` in your web browser.
 
-#### Option 2: Development Server
+### Option 2: Development Server
 ```bash
 # Start development server with live reload
 npm run dev
@@ -78,15 +84,6 @@ Edit the CSS variables in `styles.css` to match your brand colors:
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-
-## Future Enhancements
-
-- Leaderboards page with dynamic data
-- User authentication system
-- Real-time score updates
-- Squad management features
-- User profile pages
-- Mobile app integration
 
 ## License
 
