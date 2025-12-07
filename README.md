@@ -2,24 +2,16 @@
 A modern, responsive leaderboard web app with a gaming-inspired UI, designed for social competition and collaboration.
 
 ## About This Project
-
+Our app is designed to bring structure and excitement to casual competition among friends. Instead of keeping score on scraps of paper or forgetting who won last week, users can join squads, log results, and build leaderboards that update automatically. Additionally, notifications and chatrooms keep groups connected and engaged. Whether it is a billiards group, pickup soccer, or weekend board games, Squad Score hopes to empower more connected communities through competition, especially in times where people are more disconnected than ever.
 
 ## Features
 
 - **Modern Design**: Dark theme with gaming-inspired colors and typography
 - **Responsive Layout**: Works perfectly on desktop, tablet, and mobile devices
 - **Interactive Navigation**: Smooth transitions and hover effects
-- **Typography**: Uses Orbitron font for gaming feel and Inter for readability
 - **Accessibility**: Keyboard navigation support and semantic HTML
 
-## Color Scheme
-
-- **Background**: `#1A202C` (Dark blue-gray)
-- **Primary Text**: `#F5F1ED` (White)
-- **Squad Accent**: `#F88824` (Orange)
-- **Score Accent**: `#A7F2B6` (Green)
-- **Button Border**: `#FF5BCE` (Pink)
-- **Active States**: `#A7F2B6` (Green)
+Our app is now live! Try the deployed version here: [https://cs370-social-leaderboard.vercel.app/]()
 
 ## Getting Started
 
@@ -28,7 +20,7 @@ A modern, responsive leaderboard web app with a gaming-inspired UI, designed for
 - Node.js (optional, for development server)
 - Modern web browser
 
-### Installation
+### Installation & Setup
 
 1. Clone or download the project files
 2. Navigate to the project directory
@@ -77,17 +69,8 @@ Edit the CSS variables in `styles.css` to match your brand colors:
   --accent-green: #68D391;
   --accent-pink: #ED64A6;
 }
+...
 ```
-
-### Adding Pages
-1. Create new HTML files for additional pages
-2. Update navigation links in `index.html`
-3. Add corresponding JavaScript functionality in `script.js`
-
-### Modifying Content
-- Edit the welcome message in `index.html`
-- Change navigation items in the `.nav-links` section
-- Update the greeting text in `.nav-greeting`
 
 ## Browser Support
 
@@ -111,8 +94,12 @@ MIT License - feel free to use this project for your own purposes.
 
 ## Contributing
 
-1. Fork the project
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+Contributions are welcome! If you want to contribute:
+
+1. Fork the project  
+2. Create a new branch: `git checkout -b feature/your-feature-name`  
+3. Make your changes (new feature, bug fix, UI improvement, etc.)  
+4. Commit and push your changes  
+5. Open a Pull Request with a clear description of what you changed  
+
+Please make sure any new features include corresponding database migrations (if needed) and update documentation (in README or relevant `.md` files). 
