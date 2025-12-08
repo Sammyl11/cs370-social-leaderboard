@@ -25,7 +25,7 @@ Squad Score is now live! Try the [deployed version](https://cs370-social-leaderb
    ├── SUPABASE_SETUP.md       # Documentation for setting up Supabase backend
    ├── SUPABASE_AUTH.md        # Documentation for authentication configuration
    ├── SQUAD_SCHEMA_UPDATE.md  # Sample code for building squads schema
-   └── USAGE_EXAMPLES.md       # Example workflows for using the leaderboard and squads
+   └── USAGE_EXAMPLES.md       # Example workflows for using JavaScript functions in js/database.js
 ├── .gitignore
 ├── All_Supabase_Scripts.sql   # SQL schema / migration scripts (Supabase)
 ├── supabase-auth.js           # Auth integration scripts
@@ -48,39 +48,29 @@ Squad Score is now live! Try the [deployed version](https://cs370-social-leaderb
    git clone https://github.com/sammyl11/cs370-social-leaderboard.git
    cd cs370-social-leaderboard
    ```
+   
+2. Setup Supabase
+   - Use `All_Supabase_Scripts.sql` to create the required database tables 
+   - Follow instructions in `SUPABASE_SETUP.md` and `SUPABASE_AUTH.md` to configure authentication and database access  
 
-2. Navigate to the project directory
-3. (Optional) Install dependencies:
+3. (Optional) Install dependencies: 
    ```bash
    npm install
    ```
-
-## Running the Project
-
-### Option 1: Direct File Opening
-Simply open `index.html` in your web browser.
-
-### Option 2: Development Server
-```bash
-# Start development server with live reload
-npm run dev
-
-# Or use a simple static server
-npm start
-```
-
-The website will be available at `http://localhost:3000`
-
-## Project Structure
-
-```
-squad-score-website/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styles and responsive design
-├── script.js           # JavaScript functionality
-├── package.json        # Project configuration
-└── README.md          # This file
-```
+4. Launch the project:  
+   - **Option 1: Static server**
+     Open `index.html` in a web browser.
+    
+   - **Option 2: Development server**
+     Run:  
+     ```bash
+     npm run dev
+     ```  
+     or  
+     ```bash
+     npm start
+     ```  
+     then the website can be accessed at `http://localhost:3000`  
 
 ## Customization
 
@@ -90,6 +80,11 @@ Edit the `:root` and `.theme-light` variables in `styles.css` to change desired 
 ## License
 
 MIT License - feel free to use this project for your own purposes.
+
+## Future Ideas & Roadmap
+
+- Real-time updates (leaderboard auto-refresh without manual reload)  
+- Improved UI/UX: more animations, theming options 
 
 ## Contributing
 
