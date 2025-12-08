@@ -1,6 +1,6 @@
 # How to Use the Database Functions
 
-## Available Functions in `db.js`:
+## Available Functions in `database.js`:
 
 ### User Profile:
 - `getUserProfile()` - Get current user's profile from database
@@ -23,7 +23,7 @@ Add to `chat.html` before closing `</body>`:
 
 ```html
 <script type="module">
-    import { getMySquads } from './db.js';
+    import { getMySquads } from './database.js';
     
     async function loadSquads() {
         const squads = await getMySquads();
@@ -67,7 +67,7 @@ Add to `profile.html`:
 
 ```html
 <script type="module">
-    import { getUserProfile, updateUserProfile } from './db.js';
+    import { getUserProfile, updateUserProfile } from './database.js';
     
     async function loadProfile() {
         const profile = await getUserProfile();
@@ -117,7 +117,7 @@ Create a new file or add to `all-leaderboards.html`:
 
 ```html
 <script type="module">
-    import { getMyLeaderboards } from './db.js';
+    import { getMyLeaderboards } from './database.js';
     
     async function loadLeaderboards() {
         const leaderboards = await getMyLeaderboards();
@@ -157,7 +157,7 @@ Add to `chat.html`:
 
 ```html
 <script type="module">
-    import { getSquadMessages, sendSquadMessage } from './db.js';
+    import { getSquadMessages, sendSquadMessage } from './database.js';
     
     let currentSquadId = 1; // Or get from URL/selection
     
@@ -204,7 +204,7 @@ Add to `chat.html`:
 
 ```html
 <script type="module">
-    import { createSquad } from './db.js';
+    import { createSquad } from './database.js';
     
     async function createNewSquad() {
         const name = prompt('Squad name:');
@@ -229,12 +229,12 @@ Add to `chat.html`:
 
 ## Quick Start
 
-All these functions are in `db.js` - just import what you need:
+All these functions are in `database.js` - just import what you need:
 
 ```javascript
-import { getMySquads, getMyLeaderboards, getUserProfile } from './db.js';
+import { getMySquads, getMyLeaderboards, getUserProfile } from './database.js';
 ```
 
-Then call them on your pages to populate with real data from your Supabase database!
+Then call them on your pages to populate with real data from your Supabase database.
 
 
