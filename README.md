@@ -27,9 +27,9 @@ Squad Score is now live! Try the [deployed version](https://cs370-social-leaderb
    ├── SQUAD_SCHEMA_UPDATE.md  # Sample code for building squads schema
    └── USAGE_EXAMPLES.md       # Example workflows for using JavaScript functions in js/database.js
 ├── .gitignore
-├── All_Supabase_Scripts.sql   # SQL schema / migration scripts (Supabase)
+├── *.sql                      # SQL schema / migration scripts (Supabase)
 ├── supabase-auth.js           # Auth integration scripts
-├── test-api.js                # API test or helper scripts
+├── test-api.js                # API test and helper scripts
 ├── package.json               # Node project metadata (if running dev server)
 ├── *.html                     # HTML pages (login, signup, leaderboards, squad management, chat, etc.)
 └── README.md                  # This file
