@@ -15,6 +15,26 @@ Our app is designed to bring structure and excitement to casual competition amon
 
 Squad Score is now live! Try the [deployed version](https://cs370-social-leaderboard.vercel.app/) here.
 
+## Repository Structure
+
+```
+/
+├── css/                       # CSS stylesheets
+├── js/                        # Front-end JavaScript logic
+└── db_guides/                 # Supabase Markdown documentation
+   ├── SUPABASE_SETUP.md       # Documentation for setting up Supabase backend
+   ├── SUPABASE_AUTH.md        # Documentation for authentication configuration
+   ├── SQUAD_SCHEMA_UPDATE.md  # Sample code for building squads schema
+   └── USAGE_EXAMPLES.md       # Example workflows for using the leaderboard and squads
+├── .gitignore
+├── All_Supabase_Scripts.sql   # SQL schema / migration scripts (Supabase)
+├── supabase-auth.js           # Auth integration scripts
+├── test-api.js                # API test or helper scripts
+├── package.json               # Node project metadata (if running dev server)
+├── *.html                     # HTML pages (login, signup, leaderboards, squad management, chat, etc.)
+└── README.md                  # This file
+```
+
 ## Prerequisites
 
 - Modern web browser (e.g. Chrome, Firefox, Safari)
@@ -65,25 +85,7 @@ squad-score-website/
 ## Customization
 
 ### Changing Colors
-Edit the CSS variables in `styles.css` to match your brand colors:
-
-```css
-:root {
-  --bg-primary: #1A202C;
-  --text-primary: #ffffff;
-  --accent-orange: #F6AD55;
-  --accent-green: #68D391;
-  --accent-pink: #ED64A6;
-}
-...
-```
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+Edit the `:root` and `.theme-light` variables in `styles.css` to change desired colors for dark and light themes.
 
 ## License
 
