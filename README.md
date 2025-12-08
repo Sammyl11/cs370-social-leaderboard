@@ -22,12 +22,10 @@ Squad Score is now live! Try the [deployed version](https://cs370-social-leaderb
 ├── css/                       # CSS stylesheets
 ├── js/                        # Front-end JavaScript logic
 └── db_guides/                 # Supabase Markdown documentation
-   ├── SUPABASE_SETUP.md       # Documentation for setting up Supabase backend
    ├── SUPABASE_AUTH.md        # Documentation for authentication configuration
-   ├── SQUAD_SCHEMA_UPDATE.md  # Sample code for building squads schema
    └── USAGE_EXAMPLES.md       # Example workflows for using JavaScript functions in js/database.js
+├── supabase/                  # SQL schema / migration scripts (Supabase)
 ├── .gitignore
-├── *.sql                      # SQL schema / migration scripts (Supabase)
 ├── supabase-auth.js           # Auth integration scripts
 ├── test-api.js                # API test and helper scripts
 ├── package.json               # Node project metadata (if running dev server)
@@ -50,8 +48,8 @@ Squad Score is now live! Try the [deployed version](https://cs370-social-leaderb
    ```
    
 2. Setup Supabase
-   - Use `All_Supabase_Scripts.sql` to create the required database tables 
-   - Follow instructions in `SUPABASE_SETUP.md` and `SUPABASE_AUTH.md` to configure authentication and database access  
+   - Use scripts in `supabase/` folder to create the required database tables 
+   - Follow instructions in `SUPABASE_AUTH.md` to configure authentication and database access  
 
 3. (Optional) Install dependencies: 
    ```bash
